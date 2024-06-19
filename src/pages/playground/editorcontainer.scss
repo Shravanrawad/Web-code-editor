@@ -24,6 +24,14 @@
             gap: 10px;
             align-items: center;
         }
+        .left {
+            .back {
+                display: flex;
+                gap: 2px;
+                margin-left: 100px;
+                display: none;
+            }
+        }
         .title {
             font-size: 20px;
         }
@@ -120,6 +128,11 @@
               .switchbtn {
                 display: none;
               }
+            }
+            .left {
+                .back {
+                    display: flex;
+                }
             }
         }
         .editor-footer {

@@ -13,6 +13,8 @@ import 'prismjs/components/prism-java';
 import 'prismjs/themes/prism.css';
 import { Playgroundcontext, defaultCodes } from '../../providers/playprovider';
 import { ThreeDots } from 'react-loader-spinner';
+import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 const languageMap = {
     javascript: 'javascript',
@@ -32,6 +34,7 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode, toggleLoa
     const [fileTitle, setFileTitle] = useState('Untitled');
     const editorRef = useRef(null);
     const [showloader, setShowloader] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const defaultCode = getDefaultcode(fileId, folderId);
@@ -190,6 +193,7 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode, toggleLoa
                     <button onClick={saveCurrentCode}>
                         {isSaved ? 'Saved' : 'Save Code'}
                     </button>
+                    <span onClick={()=>navigate('/')} className='back'><IoIosArrowBack/>back</span>
                 </div>
                 <div className="rigth">
                     <select onChange={onChangeLanguage} value={language}>

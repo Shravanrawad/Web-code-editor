@@ -13,6 +13,7 @@ import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-java';
 import 'prismjs/themes/prism.css';
 import { Playgroundcontext, defaultCodes } from '../../providers/playprovider';
+import { IoIosArrowBack } from "react-icons/io";
 
 const languageMap = {
     javascript: 'javascript',
@@ -188,6 +189,7 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode }) {
                     <button onClick={saveCurrentCode}>
                         {isSaved ? 'Saved' : 'Save Code'}
                     </button>
+                    <span onClick={()=>navigate('/')} className='backbtn'><IoIosArrowBack/>back</span>
                 </div>
                 <div className="rigth">
                     <select onChange={onChangeLanguage} value={language}>

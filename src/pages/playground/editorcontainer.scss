@@ -83,15 +83,22 @@
             color: white;
         }
     }
+      
    
 }
 
 @media (max-width: 430px) {
     .editor-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
         .editor-header{
             flex-wrap: wrap;
             .rigth {
-               gap: 158px;
+               gap: 154px;
               .switchbtn {
                 display: none;
               }

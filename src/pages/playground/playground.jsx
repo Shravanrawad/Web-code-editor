@@ -134,7 +134,7 @@ export default function Playground() {
                     ></textarea>
                 </div>
 
-                {window.innerWidth <= 430 && <div className="empty-div"></div>}
+                {window.innerWidth <= 460 && <div className="empty-div"></div>}
             </div>
 
             {showloader && <div className="page-loader">

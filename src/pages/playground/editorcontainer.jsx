@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import './editorcontainer.scss';
-import { AiOutlineEdit } from "react-icons/ai";
 import { TfiImport, TfiExport } from "react-icons/tfi";
 import { MdOutlineFullscreen } from "react-icons/md";
 import { FaPlay } from "react-icons/fa6";
@@ -14,6 +13,7 @@ import 'prismjs/components/prism-java';
 import 'prismjs/themes/prism.css';
 import { Playgroundcontext, defaultCodes } from '../../providers/playprovider';
 import { IoIosArrowBack } from "react-icons/io";
+import { ThreeDots } from 'react-loader-spinner';
 
 const languageMap = {
     javascript: 'javascript',
@@ -22,7 +22,8 @@ const languageMap = {
     python: 'python',
 };
 
-function Editorcontainer({ fileId, folderId, initialLanguage, runcode }) {
+
+function Editorcontainer({ fileId, folderId, initialLanguage, runcode}) {
     const { getDefaultcode, saveCode, getFileTitle } = useContext(Playgroundcontext);
     const [code, setCode] = useState('');
     const [language, setLanguage] = useState(initialLanguage || 'javascript');
@@ -32,6 +33,7 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode }) {
     const [editorType, setEditorType] = useState('simple');
     const [fileTitle, setFileTitle] = useState('Untitled');
     const editorRef = useRef(null);
+    const [showloader, setShowloader] = useState(false);
 
     useEffect(() => {
         const defaultCode = getDefaultcode(fileId, folderId);
@@ -189,7 +191,6 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode }) {
                     <button onClick={saveCurrentCode}>
                         {isSaved ? 'Saved' : 'Save Code'}
                     </button>
-                    <span onClick={()=>navigate('/')} className='backbtn'><IoIosArrowBack/>back</span>
                 </div>
                 <div className="rigth">
                     <select onChange={onChangeLanguage} value={language}>
@@ -233,6 +234,22 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode }) {
                     <span>Run Code</span>
                 </button>
             </div>
+
+            {showloader && <div className="page-loader">
+                <div className="loader">
+                    <ThreeDots
+                        visible={true}
+                        height="80"
+                        width="80"
+                        color="gray"
+                        radius="9"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                    />
+                </div>
+            </div>}
+
         </div>
     );
 }

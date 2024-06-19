@@ -1,0 +1,114 @@
+.editor-box {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    
+        &.fullscreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+        }
+    
+    .editor-header {
+        background-color: #1A1A1A;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .left, .rigth {
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            align-items: center;
+        }
+        .title {
+            font-size: 20px;
+        }
+        button, select {
+            border: none;
+            background-color: #313131;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        button {
+            background-color: #2A3D3A;
+            color: #0088A2;
+            cursor: pointer;
+            transition-duration: 0.3s;
+        }
+        button:hover {
+            background-color: #365c56;
+        }
+    }
+    .editor-body {
+        background-color: black;
+        flex-grow: 1;
+    }
+    .editor-footer {
+        background-color: #1A1A1A;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        .runbtn {
+            width: 180px;
+            background-color: #2A3D3A;
+            color: #0088A2;
+            cursor: pointer;
+        }
+        button, label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px 10px;
+            background-color: #3E3E3E;
+            color: #c3c4c8;
+            border: none;
+            gap: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition-duration: 0.3s;
+        }
+        button:hover {
+            background-color: #8d8e94;
+            color: white;
+        }
+        label:hover {
+            background-color: #8d8e94;
+            color: white;
+        }
+    }
+   
+}
+
+@media (max-width: 430px) {
+    .editor-box {
+        .editor-header{
+            flex-wrap: wrap;
+            .rigth {
+               gap: 158px;
+              .switchbtn {
+                display: none;
+              }
+            }
+        }
+        .editor-footer {
+           flex-wrap: wrap;
+           gap: 30px;
+           .runbtn {
+            width: 180px;
+            background-color: #2A3D3A;
+            color: #0088A2;
+            cursor: pointer;
+           }
+           button, label {
+            width: 160px;
+           }   
+        }
+    }
+}

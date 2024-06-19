@@ -1,0 +1,181 @@
+.rigth {
+    padding: 20px;
+    overflow-y: scroll;
+    .delete-folder {
+        cursor: pointer;
+    }
+    .edit-folder {
+        cursor: pointer;
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid black;
+        .addfolder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
+        .title {
+            font-weight: 600;
+            font-size: 30px;
+            span {
+                font-weight: 400;
+            }
+        }
+    }
+     
+    .folder-container {
+        .folder-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom:  solid 1px black;
+            .header-item {
+                display: flex;
+                align-items: center;
+                gap: 18px;
+                button {
+                    background-color: white;
+                    border: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+
+        .cards-container {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            .linktoplayground {
+                text-decoration: nones;
+            }
+            .card {
+                display: flex;
+                width: 43%;
+                gap: 10px;
+                cursor: pointer;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px;
+                border-radius: 10px;
+                transition-duration: 0.3s;
+                box-shadow: 2px 2px 5px gray;
+                .title-container {
+                   display: flex;
+                   gap: 0.5px;
+                   flex-direction: column;   
+                } 
+                img {
+                    width: 40px;
+                }
+            }
+
+            .card:hover {
+                box-shadow: 2px 2px 15px gray;
+            }
+        }
+    }
+      
+}
+
+@media (max-width: 430px){
+    .rigth {
+        padding: 20px;
+        overflow-y: scroll;
+        .delete-folder {
+            cursor: pointer;
+        }
+        .edit-folder {
+            cursor: pointer;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid black;
+            .addfolder {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                background-color: white;
+                cursor: pointer;
+            }
+            .title {
+                font-weight: 600;
+                font-size: 30px;
+                span {
+                    font-weight: 400;
+                }
+            }
+        }
+         
+        .folder-container {
+            .folder-header {
+                display: flex;
+                justify-content: space-between;
+                padding: 20px 0;
+                border-bottom:  solid 1px black;
+                .header-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 18px;
+                    button {
+                        background-color: white;
+                        border: none;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+    
+            .cards-container {
+                padding: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: space-between;
+                .linktoplayground {
+                    text-decoration: nones;
+                }
+                .card {
+                    display: flex;
+                    width: 100%;
+                    gap: 10px;
+                    cursor: pointer;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 12px;
+                    border-radius: 10px;
+                    transition-duration: 0.3s;
+                    box-shadow: 2px 2px 5px gray;
+                    .title-container {
+                       display: flex;
+                       gap: 0.5px;
+                       flex-direction: column;   
+                    } 
+                    img {
+                        width: 40px;
+                    }
+                }
+    
+                .card:hover {
+                    box-shadow: 2px 2px 15px gray;
+                }
+            }
+        }
+          
+    }
+}

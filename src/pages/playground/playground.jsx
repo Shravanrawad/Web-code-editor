@@ -8,6 +8,7 @@ import { Playgroundcontext } from '../../providers/playprovider';
 import { makesubmission } from '../../providers/service';
 import { ThreeDots } from 'react-loader-spinner';
 import { IoIosArrowBack } from "react-icons/io";
+import { useLocation } from 'react-router-dom';
 
 export default function Playground() {
     const params = useParams();
@@ -20,6 +21,11 @@ export default function Playground() {
 
     const navigate = useNavigate();
     const outputRef = useRef(null);
+    const location = useLocation();
+
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    }, [location])
 
     useEffect(() => {
         const lang = getFileLanguage(fileId, folderId);
@@ -77,7 +83,6 @@ export default function Playground() {
             } else {
                 setOutput(atob(data.stderr));
             }
-            // Scroll to the bottom of the output textarea
             outputRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }
     };

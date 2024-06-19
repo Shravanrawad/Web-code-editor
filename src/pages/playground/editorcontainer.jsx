@@ -12,7 +12,6 @@ import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-java';
 import 'prismjs/themes/prism.css';
 import { Playgroundcontext, defaultCodes } from '../../providers/playprovider';
-import { IoIosArrowBack } from "react-icons/io";
 import { ThreeDots } from 'react-loader-spinner';
 
 const languageMap = {
@@ -22,8 +21,7 @@ const languageMap = {
     python: 'python',
 };
 
-
-function Editorcontainer({ fileId, folderId, initialLanguage, runcode}) {
+function Editorcontainer({ fileId, folderId, initialLanguage, runcode, toggleLoader }) {
     const { getDefaultcode, saveCode, getFileTitle } = useContext(Playgroundcontext);
     const [code, setCode] = useState('');
     const [language, setLanguage] = useState(initialLanguage || 'javascript');
@@ -131,6 +129,7 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode}) {
 
     const onRunCode = () => {
         console.log('Running code...');
+        toggleLoader(true);
         runcode({ code, language });
     };
 
@@ -187,7 +186,7 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode}) {
         <div className={`editor-box ${isFullscreen ? 'fullscreen' : ''}`}>
             <div className="editor-header">
                 <div className="left">
-                    <b className='title'>{fileTitle}</b> 
+                    <b className='title'>{fileTitle}</b>
                     <button onClick={saveCurrentCode}>
                         {isSaved ? 'Saved' : 'Save Code'}
                     </button>
@@ -249,7 +248,6 @@ function Editorcontainer({ fileId, folderId, initialLanguage, runcode}) {
                     />
                 </div>
             </div>}
-
         </div>
     );
 }

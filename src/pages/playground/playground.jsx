@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect, useCallback, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import logo from '../../logo/image.png';
 import './playground.scss';
 import { TfiImport, TfiExport } from "react-icons/tfi";
@@ -8,7 +8,6 @@ import { Playgroundcontext } from '../../providers/playprovider';
 import { makesubmission } from '../../providers/service';
 import { ThreeDots } from 'react-loader-spinner';
 import { IoIosArrowBack } from "react-icons/io";
-import { useLocation } from 'react-router-dom';
 
 export default function Playground() {
     const params = useParams();
@@ -23,9 +22,9 @@ export default function Playground() {
     const outputRef = useRef(null);
     const location = useLocation();
 
-    useEffect(()=>{
-        window.scrollTo(0,0);
-    }, [location])
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
     useEffect(() => {
         const lang = getFileLanguage(fileId, folderId);
@@ -73,7 +72,7 @@ export default function Playground() {
 
     const callback = ({ apiStatus, data, message }) => {
         setShowloader(apiStatus === 'loading');
-    
+
         if (apiStatus === 'error') {
             setOutput('Something went wrong');
             console.error('API Error:', message);
@@ -91,16 +90,26 @@ export default function Playground() {
         makesubmission({ code, language, stdin: userinput, callback });
     }, [userinput]);
 
+    const toggleLoader = (state) => {
+        setShowloader(state);
+    };
+
     return (
         <div className='playground-container'>
             <div className='header-container'>
-                <span onClick={()=>navigate('/')} className='backbtn'><IoIosArrowBack/>back</span>
+                <span onClick={() => navigate('/')} className='backbtn'><IoIosArrowBack />back</span>
                 <img className='logo' src={logo} alt="Logo" onClick={() => navigate('/')} />
             </div>
 
             <div className='content-container'>
                 <div className='editor-container'>
-                    <Editorcontainer fileId={fileId} folderId={folderId} initialLanguage={language} runcode={runcode} />
+                    <Editorcontainer
+                        fileId={fileId}
+                        folderId={folderId}
+                        initialLanguage={language}
+                        runcode={runcode}
+                        toggleLoader={toggleLoader}
+                    />
                 </div>
 
                 <div className='input-container'>
